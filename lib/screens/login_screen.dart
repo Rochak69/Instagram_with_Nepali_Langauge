@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/screens/signup_screen.dart';
 import 'package:instagram/utils/app_images.dart';
 import 'package:instagram/utils/colors.dart';
 import 'package:instagram/utils/ui_helper.dart';
 import 'package:instagram/widgets/text_field_input.dart';
 
-class LogInScreen extends StatelessWidget {
+class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
+
+  @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +41,14 @@ class LogInScreen extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
             UiHelper.verticalSpace(vspace: Spacing.xxlarge),
-            const TextFieldInput(
+            TextFieldInput(
+                textEditingController: _emailController,
                 hintText: "Enter your email",
-                textInputType: TextInputType.emailAddress),
+                textInputType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next),
             UiHelper.verticalSpace(vspace: Spacing.medium),
-            const TextFieldInput(
+            TextFieldInput(
+              textEditingController: _passwordController,
               hintText: "Enter your password",
               textInputType: TextInputType.text,
               isPass: true,
@@ -54,7 +71,12 @@ class LogInScreen extends StatelessWidget {
                   const Text("Dont have an account?"),
                   UiHelper.horizontaSpace(hspace: Spacing.small),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen()));
+                      },
                       child: const Text(
                         "Sign up",
                         style: TextStyle(color: AppColors.blueColor),

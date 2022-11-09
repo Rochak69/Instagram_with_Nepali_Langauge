@@ -5,6 +5,7 @@ import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/reponsive/mobile_screen_layout.dart';
 import 'package:instagram/reponsive/responsive.dart';
 import 'package:instagram/reponsive/web_screen_layout.dart';
+import 'package:instagram/screens/signup_screen.dart';
 import 'package:instagram/utils/colors.dart';
 
 void main() async {

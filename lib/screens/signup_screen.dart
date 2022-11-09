@@ -4,8 +4,10 @@ import 'package:instagram/resources/auth_methods.dart';
 import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/utils/app_images.dart';
 import 'package:instagram/utils/colors.dart';
+import 'package:instagram/utils/language_constants.dart';
 import 'package:instagram/utils/ui_helper.dart';
 import 'package:instagram/widgets/text_field_input.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -68,27 +70,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
               UiHelper.verticalSpace(vspace: Spacing.medium),
               TextFieldInput(
                 textEditingController: _usernameController,
-                hintText: "Enter your username",
+                hintText: translation(context).enterYourUsername,
                 textInputType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
               UiHelper.verticalSpace(vspace: Spacing.medium),
               TextFieldInput(
                   textEditingController: _emailController,
-                  hintText: "Enter your email",
+                  hintText: translation(context).enterYourEmail,
                   textInputType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next),
               UiHelper.verticalSpace(vspace: Spacing.medium),
               TextFieldInput(
                   textEditingController: _passwordController,
-                  hintText: "Enter your password",
+                  hintText: translation(context).enterYourPassword,
                   textInputType: TextInputType.text,
                   isPass: true,
                   textInputAction: TextInputAction.next),
               UiHelper.verticalSpace(vspace: Spacing.medium),
               TextFieldInput(
                 textEditingController: _bioController,
-                hintText: "Enter your bio",
+                hintText: translation(context).enterYourBio,
                 textInputType: TextInputType.text,
               ),
               UiHelper.verticalSpace(vspace: Spacing.medium),
@@ -104,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           bio: _bioController.text);
                       debugPrint(res);
                     },
-                    child: Text("Sign Up")),
+                    child: Text(translation(context).signUp)),
               ),
               Flexible(
                 flex: 1,
@@ -115,7 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Already have an account?"),
+                    Text(translation(context).alreadyHaveAnAccount),
                     UiHelper.horizontaSpace(hspace: Spacing.small),
                     GestureDetector(
                         onTap: () {
@@ -124,9 +126,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               MaterialPageRoute(
                                   builder: (context) => const LogInScreen()));
                         },
-                        child: const Text(
-                          "Log In",
-                          style: TextStyle(color: AppColors.blueColor),
+                        child: Text(
+                          translation(context).logIn,
+                          style: const TextStyle(color: AppColors.blueColor),
                         ))
                   ],
                 ),

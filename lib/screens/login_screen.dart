@@ -6,6 +6,8 @@ import 'package:instagram/utils/colors.dart';
 import 'package:instagram/utils/ui_helper.dart';
 import 'package:instagram/widgets/text_field_input.dart';
 
+import '../utils/language_constants.dart';
+
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
 
@@ -43,13 +45,13 @@ class _LogInScreenState extends State<LogInScreen> {
             UiHelper.verticalSpace(vspace: Spacing.xxlarge),
             TextFieldInput(
                 textEditingController: _emailController,
-                hintText: "Enter your email",
+                hintText: translation(context).enterYourEmail,
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next),
             UiHelper.verticalSpace(vspace: Spacing.medium),
             TextFieldInput(
               textEditingController: _passwordController,
-              hintText: "Enter your password",
+              hintText: translation(context).enterYourPassword,
               textInputType: TextInputType.text,
               isPass: true,
             ),
@@ -57,7 +59,8 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(
               height: 45,
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text("Sign In")),
+              child: ElevatedButton(
+                  onPressed: () {}, child: Text(translation(context).logIn)),
             ),
             Flexible(
               flex: 1,
@@ -68,7 +71,7 @@ class _LogInScreenState extends State<LogInScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Dont have an account?"),
+                  Text(translation(context).dontHaveAnAccount),
                   UiHelper.horizontaSpace(hspace: Spacing.small),
                   GestureDetector(
                       onTap: () {
@@ -77,9 +80,9 @@ class _LogInScreenState extends State<LogInScreen> {
                             MaterialPageRoute(
                                 builder: (context) => const SignUpScreen()));
                       },
-                      child: const Text(
-                        "Sign up",
-                        style: TextStyle(color: AppColors.blueColor),
+                      child: Text(
+                        translation(context).signUp,
+                        style: const TextStyle(color: AppColors.blueColor),
                       ))
                 ],
               ),

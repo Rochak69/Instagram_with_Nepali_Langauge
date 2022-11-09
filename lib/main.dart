@@ -2,11 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/screens/login_screen.dart';
-import 'package:instagram/reponsive/mobile_screen_layout.dart';
-import 'package:instagram/reponsive/responsive.dart';
-import 'package:instagram/reponsive/web_screen_layout.dart';
-import 'package:instagram/screens/signup_screen.dart';
 import 'package:instagram/utils/colors.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +34,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Instagram Clone',
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('ne'),
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: AppColors.mobileBackgroundColor),
       // home: ResponiveLayout(

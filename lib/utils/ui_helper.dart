@@ -28,12 +28,6 @@ class UiHelper {
   static const double _xxlargeHorSpace = 30;
 
   // Corner Radius
-  static const double _xSmallCornerRadius = 3;
-  static const double _smallCornerRadius = 8;
-  static const double _mediumCornerRadius = 10;
-  static const double _largeCornerRadiusHorSpace = 14;
-  static const double _xlargeCornerRadius = 16;
-
   static Widget horizontalDivider = const Divider(
     color: Colors.grey,
     height: 2.0,

@@ -20,6 +20,7 @@ class _LogInScreenState extends State<LogInScreen> {
   final TextEditingController _emailController = TextEditingController();
   @override
   void dispose() {
+    super.dispose();
     _passwordController.dispose();
     _emailController.dispose();
   }
@@ -34,62 +35,76 @@ class _LogInScreenState extends State<LogInScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Flexible(
-              flex: 1,
-              child: Container(),
-            ),
-            SvgPicture.asset(
-              AppImages.instagramIcon,
-              color: AppColors.primaryColor,
-            ),
+            Flexible(flex: 1, child: Container()),
+            _buildInstagramLogo(),
             UiHelper.verticalSpace(vspace: Spacing.xxlarge),
-            TextFieldInput(
-                textEditingController: _emailController,
-                hintText: translation(context).enterYourEmail,
-                textInputType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next),
+            _buildEmailTextField(),
             UiHelper.verticalSpace(vspace: Spacing.medium),
-            TextFieldInput(
-              textEditingController: _passwordController,
-              hintText: translation(context).enterYourPassword,
-              textInputType: TextInputType.text,
-              isPass: true,
-            ),
+            _buildPasswordInputField(),
             UiHelper.verticalSpace(vspace: Spacing.medium),
-            SizedBox(
-              height: 45,
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () {}, child: Text(translation(context).logIn)),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(translation(context).dontHaveAnAccount),
-                  UiHelper.horizontaSpace(hspace: Spacing.small),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUpScreen()));
-                      },
-                      child: Text(
-                        translation(context).signUp,
-                        style: const TextStyle(color: AppColors.blueColor),
-                      ))
-                ],
-              ),
-            )
+            _buildButton(),
+            Flexible(flex: 1, child: Container()),
+            _buildBottomText(context)
           ],
         ),
       ),
     ));
+  }
+
+  _buildInstagramLogo() {
+    return SvgPicture.asset(
+      AppImages.instagramIcon,
+      color: AppColors.primaryColor,
+    );
+  }
+
+  _buildEmailTextField() {
+    return TextFieldInput(
+        textEditingController: _emailController,
+        hintText: translation(context).enterYourEmail,
+        textInputType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.next);
+  }
+
+  _buildPasswordInputField() {
+    return TextFieldInput(
+      textEditingController: _passwordController,
+      hintText: translation(context).enterYourPassword,
+      textInputType: TextInputType.text,
+      isPass: true,
+    );
+  }
+
+  _buildButton() {
+    return SizedBox(
+      height: 45,
+      width: double.infinity,
+      child: ElevatedButton(
+          onPressed: () {}, child: Text(translation(context).logIn)),
+    );
+  }
+
+  _buildBottomText(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(translation(context).dontHaveAnAccount),
+          UiHelper.horizontaSpace(hspace: Spacing.small),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpScreen()));
+              },
+              child: Text(
+                translation(context).signUp,
+                style: const TextStyle(color: AppColors.blueColor),
+              ))
+        ],
+      ),
+    );
   }
 }

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       title: 'Instagram Clone',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('ne'),
+      locale: const Locale('en'),
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: AppColors.mobileBackgroundColor),
       // home: ResponiveLayout(
